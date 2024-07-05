@@ -4,13 +4,34 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 
-class Persons extends ConsumerWidget {
+class Persons extends ConsumerStatefulWidget {
   const Persons({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<ConsumerStatefulWidget> createState() => PersonState();
+}
+
+class PersonState extends ConsumerState<Persons>{
+  final ScrollController scrollController = ScrollController();
+
+  @override
+  void initState(){
+    super.initState();
+
+    scrollController.addListener(loadMore);
+  }
+
+  void loadMore(){
+    if (scrollController.position.pixels ==
+          scrollController.position.maxScrollExtent) {
+        
+        debugPrint('end of the list');
+      }
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final AsyncValue personsData = ref.watch(personProvider);
-    final ScrollController scrollController = ScrollController();
 
     return MaterialApp(
       home: Scaffold(
