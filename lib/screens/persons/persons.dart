@@ -13,6 +13,7 @@ class Persons extends ConsumerStatefulWidget {
 
 class PersonState extends ConsumerState<Persons>{
   final ScrollController scrollController = ScrollController();
+  
 
   @override
   void initState(){
