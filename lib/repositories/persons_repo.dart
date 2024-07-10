@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:federation/constants.dart' as constants;
 import 'package:federation/models/news/news_model.dart';
 import 'package:federation/models/persons/person_model.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class PersonRepo{
   Future getPrsons({int ofset = 0,int limit = 5}) async {
@@ -23,3 +24,5 @@ class PersonRepo{
     }
   }
 }
+
+final personsRepoProvider = Provider<PersonRepo>((ref)=>PersonRepo());

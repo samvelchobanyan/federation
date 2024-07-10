@@ -38,7 +38,7 @@ final router = GoRouter(
               path: '/persons',
               builder: (context, state){
                 // final String title = state.pathParameters['id'].toString();
-                return const Persons();
+                return Persons();
               },
               routes: [
               GoRoute(
