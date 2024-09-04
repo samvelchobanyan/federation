@@ -1,8 +1,10 @@
+
 import 'package:federation/screens/home.dart';
 import 'package:federation/screens/news/news.dart';
 import 'package:federation/screens/news/news_inner.dart';
 import 'package:federation/screens/persons/persons.dart';
 import 'package:federation/screens/persons/persons_inner.dart';
+import 'package:federation/screens/test/test.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -48,7 +50,17 @@ final router = GoRouter(
               ]
             )            
           ]
-        )        
+        ),        
+        StatefulShellBranch(
+          routes: [
+            GoRoute(
+              path: '/test',
+              builder: (context, state){
+                return Test();
+              }
+            ),
+            
+          ])
       ]
     ),
     // GoRoute(path: '/welcome',builder: ((context, state) => const Welcome())),

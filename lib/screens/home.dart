@@ -33,10 +33,10 @@ class Home extends StatelessWidget {
           //   icon: Icon(Icons.kayaking),
           //   label: 'Advice'
           //   ),
-          // BottomNavigationBarItem(
-          //   icon: Icon(Icons.settings),
-          //   label: 'Settings'
-          //   )
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: 'Settings'
+            )
           ],),
     );
   }
