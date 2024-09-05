@@ -56,7 +56,7 @@ final router = GoRouter(
             GoRoute(
               path: '/test',
               builder: (context, state){
-                return Test();
+                return const Test();
               }
             ),
             
