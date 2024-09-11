@@ -1,3 +1,4 @@
+import 'package:federation/providers/newtest_provider.dart';
 import 'package:federation/providers/test_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -59,7 +60,7 @@ class Test extends ConsumerWidget {
             children: [
               Consumer(
                 builder: (context, WidgetRef ref, child) {
-                  final value = ref.watch(testProvider);
+                  final value = ref.watch(newTest);
                   return TitleWidget(value.toString()); // Hello world
                   }
               ),
