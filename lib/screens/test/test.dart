@@ -1,16 +1,30 @@
 import 'package:federation/providers/test_provider.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class TitleWidget extends StatelessWidget {
+class TitleWidget extends ConsumerWidget  {
   final String txt;
   const TitleWidget( this.txt, {super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return Text(txt);
+  Widget build(BuildContext context, WidgetRef ref) {
+    Color clr = Colors.red;
+    ref.listen(testProvider,(int? previousCount, int newCount){
+      
+      // clr= newCount/5 == 5 ? Colors.blue : Colors.red;
+      var asd =( newCount%5).toString();
+      debugPrint('listen change $asd');
+      if(newCount%5 == 0){
+        
+        ref.refresh(testProvider);
+      }
+    });
+    return Text(
+      txt, 
+      style:  TextStyle(
+        color: clr
+      ),
+      );
   }
 }
 
@@ -24,7 +38,7 @@ class ButtonWidget extends StatelessWidget {
         return TextButton(
           child: const Text('click'),
           onPressed: () {
-            ref.read(testProvider.notifier).state++;
+            ref.watch(testProvider.notifier).state++;
           },       
         );
       }
