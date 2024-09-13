@@ -40,7 +40,8 @@ class ButtonWidget extends StatelessWidget {
         return TextButton(
           child: const Text('click'),
           onPressed: () {
-            ref.watch(testProvider.notifier).state++;
+            debugPrint('add item');
+            ref.read(testListProvider.notifier).addItem('newItm');
           },       
         );
       }
@@ -58,12 +59,17 @@ class TestList extends ConsumerWidget {
       home: Scaffold(
         body: Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              for ( var i in lst ) Text(i.toString())
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  for ( var i in lst ) Text(i.toString())
+                ],
+              ),
+              const ButtonWidget()              
             ],
-          ),
+            )          
         )
       ),
     );
