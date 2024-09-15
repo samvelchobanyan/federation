@@ -6,6 +6,7 @@ import 'package:federation/screens/persons/persons.dart';
 import 'package:federation/screens/persons/persons_inner.dart';
 import 'package:federation/screens/test/test.dart';
 import 'package:federation/screens/test/test_list.dart';
+import 'package:federation/screens/test/test_user.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -57,7 +58,10 @@ final router = GoRouter(
             GoRoute(
               path: '/test',
               builder: (context, state){
-                return const TestList();
+                return const TestUser();
+                // return const TestList();
+                // return const Test();
+
               }
             ),
             

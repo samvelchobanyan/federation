@@ -1,5 +1,7 @@
+import 'package:federation/models/test/test_model.dart';
 import 'package:federation/providers/newtest_provider.dart';
 import 'package:federation/providers/test_provider.dart';
+import 'package:federation/providers/test_user.dart';
 import 'package:federation/providers/testlist_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -41,7 +43,7 @@ class ButtonWidget extends StatelessWidget {
           child: const Text('click'),
           onPressed: () {
             debugPrint('add item');
-            ref.read(testListProvider.notifier).addItem('newItm');
+            ref.refresh(testUserProvider(1));
           },       
         );
       }
@@ -49,29 +51,32 @@ class ButtonWidget extends StatelessWidget {
   }
 }
 
-class TestList extends ConsumerWidget {
-  const TestList({super.key});
+class TestUser extends ConsumerWidget {
+  const TestUser({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final lst = ref.watch(testListProvider);
-    return MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Column(
+    final userDataAsync = ref.watch(testUserProvider(2));
+    
+    return Column(
             children: [
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  for ( var i in lst ) Text(i.toString())
-                ],
+              ElevatedButton(
+                onPressed: () => ref.refresh(testUserProvider(1)),
+                child: const Text('Fetch joke!'),
               ),
-              const ButtonWidget()              
-            ],
-            )          
-        )
-      ),
-    );
+              userDataAsync.when(
+                    data: (data) {
+                      debugPrint(data.data!.firstName!);
+                       return Text(data.data!.firstName!);
+                       }, 
+                    error: (error, stackTrace) => Center(
+                      child: Text(error.toString()),
+                    ),
+                    loading: () => const Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                ),
+            ]          
+        );
   }
 }
