@@ -6,9 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 
-final TestUserNotifierProvider = AsyncNotifierProvider<TestUserNotifier,TestModel>(TestUserNotifier.new);
+final TestUserNotifierProvider = AsyncNotifierProvider.autoDispose.family<TestUserNotifier,TestModel,int>(TestUserNotifier.new);
 
-class TestUserNotifier extends  AsyncNotifier<TestModel>{
+class TestUserNotifier extends AutoDisposeFamilyAsyncNotifier<TestModel, int>{
 
    Future<TestModel> fetchSome(userid) async{
     final response = await Dio().get(
@@ -20,8 +20,8 @@ class TestUserNotifier extends  AsyncNotifier<TestModel>{
   }
 
   @override
-  FutureOr<TestModel> build(){
-    return fetchSome(1);
+  Future<TestModel> build(int id){
+    return fetchSome(id);
   }
  
 }

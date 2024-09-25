@@ -43,7 +43,7 @@ class ButtonWidget extends StatelessWidget {
           child: const Text('click'),
           onPressed: () {
             debugPrint('add item');
-            ref.watch(TestUserNotifierProvider.notifier).fetchSome(2);
+            // ref.watch(TestUserNotifierProvider);
           },       
         );
       }
@@ -56,12 +56,12 @@ class TestUser extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final userDataAsync = ref.watch(TestUserNotifierProvider);
+    final userDataAsync = ref.watch(TestUserNotifierProvider(1));
     
     return Column(
             children: [
               ElevatedButton(
-                onPressed: () => ref.watch(TestUserNotifierProvider.notifier).fetchSome(2),
+                onPressed: () => ref.watch(TestUserNotifierProvider(2)),
                 child: const Text('Fetch joke!'),
               ),
               userDataAsync.when(
