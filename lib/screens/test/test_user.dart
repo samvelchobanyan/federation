@@ -61,11 +61,12 @@ class TestUser extends ConsumerWidget {
     return Column(
             children: [
               ElevatedButton(
-                onPressed: () => ref.watch(TestUserNotifierProvider(2)),
+                onPressed: () => ref.read(TestUserNotifierProvider(1).notifier).getNew(2),
                 child: const Text('Fetch joke!'),
               ),
               userDataAsync.when(
                     data: (data) {
+                      debugPrint('ui name');
                       debugPrint(data.data!.firstName!);
                        return Text(data.data!.firstName!);
                        }, 

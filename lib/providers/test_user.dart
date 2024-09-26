@@ -19,6 +19,13 @@ class TestUserNotifier extends AutoDisposeFamilyAsyncNotifier<TestModel, int>{
     return TestModel.fromJson(dataJson);
   }
 
+  getNew(id) async {
+    state = const AsyncValue.loading();
+    state = await AsyncValue.guard(() async {
+      return fetchSome(id);
+      });
+  }
+
   @override
   Future<TestModel> build(int id){
     return fetchSome(id);
