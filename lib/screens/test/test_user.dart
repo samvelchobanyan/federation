@@ -44,6 +44,8 @@ class ButtonWidget extends StatelessWidget {
           onPressed: () {
             debugPrint('add item');
             // ref.watch(TestUserNotifierProvider);
+            var userid = ref.read(testProvider.notifier).state++;
+            ref.read(TestUserNotifierProvider(1).notifier).getNew(userid);
           },       
         );
       }
@@ -60,6 +62,7 @@ class TestUser extends ConsumerWidget {
     
     return Column(
             children: [
+              const ButtonWidget(),
               ElevatedButton(
                 onPressed: () => ref.read(TestUserNotifierProvider(1).notifier).getNew(2),
                 child: const Text('Fetch joke!'),

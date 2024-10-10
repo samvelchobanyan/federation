@@ -20,6 +20,7 @@ class TestUserNotifier extends AutoDisposeFamilyAsyncNotifier<TestModel, int>{
   }
 
   getNew(id) async {
+    debugPrint('get new $id');
     state = const AsyncValue.loading();
     state = await AsyncValue.guard(() async {
       return fetchSome(id);
