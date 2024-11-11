@@ -1,1 +1,1 @@
-const String apiUrl = 'demo.zoom.am/test';
+const String apiUrl = 'demo.gradarak.am/test';

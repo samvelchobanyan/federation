@@ -4,10 +4,10 @@ $limit = $_GET["limit"];
 
 for($i=$ofset; $i<$limit+$ofset; $i++ ){
   $arr[] = array(
-		"name"=>$i."Արմեն Տիգրանյան".$i,
+		"name"=>$i."Արմեն ՏիգրանյանWWW".$i,
 		"place"=>$i."Սիսիան, Սյունիք".$i,
 		"profile"=>"Անասնապահություն, Հողագործություն...".$i,
-		"image"=>"https://demo.zoom.am/test/avatars/".$i.".jpg");
+		"image"=>"https://demo.gradarak.am/test/avatars/".$i.".jpg");
 }
 
 $final_array = Array("status"=>"ok","message"=>"ok","data"=>$arr);
