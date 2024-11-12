@@ -6,7 +6,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 
 class Persons extends ConsumerWidget{
-  final ScrollController scrollController = ScrollController(); 
+  final ScrollController scrollController = ScrollController();
+
+  Persons({super.key}); 
 
   // void loadMore(){
   //   if (scrollController.position.pixels == scrollController.position.maxScrollExtent) {       

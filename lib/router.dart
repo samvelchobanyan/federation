@@ -4,8 +4,6 @@ import 'package:federation/screens/news/news.dart';
 import 'package:federation/screens/news/news_inner.dart';
 import 'package:federation/screens/persons/persons.dart';
 import 'package:federation/screens/persons/persons_inner.dart';
-import 'package:federation/screens/test/test.dart';
-import 'package:federation/screens/test/test_list.dart';
 import 'package:federation/screens/test/test_user.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';

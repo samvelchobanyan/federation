@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:federation/constants.dart' as constants;
-import 'package:federation/models/news/news_model.dart';
 import 'package:federation/models/persons/person_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

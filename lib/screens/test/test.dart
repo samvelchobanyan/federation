@@ -64,8 +64,8 @@ class Test extends ConsumerWidget {
                   return TitleWidget(value.toString()); // Hello world
                   }
               ),
-              TitleWidget('lalatyrop'),
-              ButtonWidget()
+              const TitleWidget('lalatyrop'),
+              const ButtonWidget()
             ],
           ),
         )

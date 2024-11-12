@@ -11,7 +11,7 @@ class News extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final AsyncValue newsList = ref.watch(newsProvider);
 
-    _newslList(newsList){
+    newslList(newsList){
       return Padding(
               padding: const EdgeInsets.all(10),
               child: ListView.separated(
@@ -32,7 +32,7 @@ class News extends ConsumerWidget {
                             ClipRRect(
                               borderRadius: BorderRadius.circular(16),
                               child: SizedBox.fromSize(
-                                size: Size.fromHeight(128),
+                                size: const Size.fromHeight(128),
                                 child: Image.network(
                                     newsList[index].image,
                                     fit: BoxFit.fitWidth,
@@ -56,7 +56,7 @@ class News extends ConsumerWidget {
                                     style: const TextStyle(fontFamily: 'Mordoto', fontStyle: FontStyle.italic, fontSize: 14),
                                     ),
                                 ),
-                                  const SizedBox(width: 20, child: const Icon(Icons.arrow_circle_right_rounded))
+                                  const SizedBox(width: 20, child: Icon(Icons.arrow_circle_right_rounded))
                               ],
                             ),
                         ],),
@@ -71,7 +71,7 @@ class News extends ConsumerWidget {
       home: Scaffold(
         body: Center(
           child: switch(newsList){
-            AsyncData(:final value) => _newslList(value),
+            AsyncData(:final value) => newslList(value),
             AsyncError() => const Text('Oops, something unexpected happened'),
             _ => const CircularProgressIndicator(),
           } 
